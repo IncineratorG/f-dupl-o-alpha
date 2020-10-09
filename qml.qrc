@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ui/screens/test/TestScreen.qml</file>
+        <file>ui/components/common/coordinators/main-cooridnator/MainCoordinator.qml</file>
+    </qresource>
+</RCC>
