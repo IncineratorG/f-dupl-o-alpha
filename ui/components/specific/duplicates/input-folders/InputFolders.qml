@@ -6,13 +6,19 @@ import QtQuick.Dialogs 1.3
 import "../input-folders-list"
 
 Item {
-    Item {
+    Rectangle {
         id: inputFoldersListContainer
 
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: buttonsContainer.left
+        anchors.topMargin: 4
+        anchors.bottomMargin: 4
+        anchors.leftMargin: 4
+
+        border.width: 1
+        border.color: 'lightgrey'
 
         InputFoldersList {
             anchors.fill: parent
@@ -37,28 +43,12 @@ Item {
             Button {
                 id: addFolderButton
 
-                anchors.left: parent.left
-                anchors.right: parent.right
+                anchors.centerIn: parent
 
                 text: l.t("InputFolders_addFolderButton")
 
                 onClicked: {
                     fileDialog.open()
-                }
-            }
-
-            Button {
-                id: removeFolderButton
-
-                anchors.top: addFolderButton.bottom
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.topMargin: 4
-
-                text: l.t("InputFolders_removeFolderButton")
-
-                onClicked: {
-                    DuplicatesScreenController.removeFolderButtonHandler()
                 }
             }
         }

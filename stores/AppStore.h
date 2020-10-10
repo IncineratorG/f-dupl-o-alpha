@@ -10,6 +10,8 @@
 #include "stores/reducers/input-folders-list/InputFoldersListReducer.h"
 #include "stores/states/system/SystemState.h"
 #include "stores/reducers/system/SystemReducer.h"
+#include "stores/states/duplicates-finder/DuplicatesFinderState.h"
+#include "stores/reducers/duplicates-finder/DuplicatesFinderReducer.h"
 
 #include <QList>
 
@@ -19,6 +21,7 @@ public:
     std::shared_ptr<TestState> testState;
     std::shared_ptr<InputFoldersListState> inputFoldersListState;
     std::shared_ptr<SystemState> systemState;
+    std::shared_ptr<DuplicatesFinderState> duplicatesFinderState;
 
     static AppStore* get();
 
@@ -33,9 +36,10 @@ private:
 
     QList<std::shared_ptr<Store>> mStores;
 
-    std::shared_ptr<Store> testStore;
-    std::shared_ptr<Store> inputFoldersListStore;
-    std::shared_ptr<Store> systemStore;
+    std::shared_ptr<Store> mTestStore;
+    std::shared_ptr<Store> mInputFoldersListStore;
+    std::shared_ptr<Store> mSystemStore;
+    std::shared_ptr<Store> mDuplicatesFinderStore;
 };
 
 #endif // APPSTORE_H

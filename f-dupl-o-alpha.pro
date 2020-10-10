@@ -49,7 +49,13 @@ SOURCES += \
     stores/action-types/system/SystemActionTypes.cpp \
     common/libs/native-component/NativeComponent.cpp \
     native-screens/duplicates/models/DuplicatesScreenModel.cpp \
-    stores/actions/input-folders-list/InputFoldersListActions.cpp
+    stores/actions/input-folders-list/InputFoldersListActions.cpp \
+    native-components/specific/duplicates/input-folders-list/InputFoldersListComponent.cpp \
+    native-components/specific/duplicates/input-folders-list/models/InputFoldersListModel.cpp \
+    stores/states/duplicates-finder/DuplicatesFinderState.cpp \
+    stores/reducers/duplicates-finder/DuplicatesFinderReducer.cpp \
+    stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.cpp \
+    stores/actions/duplicates-finder/DuplicatesFinderActions.cpp
 
 RESOURCES += qml.qrc
 
@@ -100,5 +106,11 @@ HEADERS += \
     stores/action-types/system/SystemActionTypes.h \
     common/libs/native-component/NativeComponent.h \
     native-screens/duplicates/models/DuplicatesScreenModel.h \
-    stores/actions/input-folders-list/InputFoldersListActions.h
+    stores/actions/input-folders-list/InputFoldersListActions.h \
+    native-components/specific/duplicates/input-folders-list/InputFoldersListComponent.h \
+    native-components/specific/duplicates/input-folders-list/models/InputFoldersListModel.h \
+    stores/states/duplicates-finder/DuplicatesFinderState.h \
+    stores/reducers/duplicates-finder/DuplicatesFinderReducer.h \
+    stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.h \
+    stores/actions/duplicates-finder/DuplicatesFinderActions.h
 

@@ -7,25 +7,7 @@
 #include <QDebug>
 
 DuplicatesScreenController::DuplicatesScreenController() {
-//    AppStore::get()->inputFoldersListState->select(Selector({}, [] () {
 
-//    }));
-
-    auto inputFoldersListState = AppStore::get()->inputFoldersListState;
-
-    inputFoldersListState->select(
-                Selector(
-                    {inputFoldersListState->folderNames->propId()},
-                    [inputFoldersListState] () {
-//                        QList<QString> folderNames = inputFoldersListState->folderNames->get();
-
-//                        qDebug() << __PRETTY_FUNCTION__ << "->SIZE: " << folderNames.length();
-
-//                        for (int i = 0; i < folderNames.length(); ++i) {
-//                            qDebug() << __PRETTY_FUNCTION__ << folderNames.at(i);
-//                        }
-                    })
-                );
 }
 
 void DuplicatesScreenController::addFolderHandler(const QString& folderUrl) {
@@ -37,10 +19,22 @@ void DuplicatesScreenController::addFolderHandler(const QString& folderUrl) {
     }
 
     AppStore::get()->dispatch(
-                    InputFoldersListActions::addFolderNameAction(validFolderUrl)
-                );
+        InputFoldersListActions::addFolderNameAction(validFolderUrl)
+    );
 }
 
-void DuplicatesScreenController::removeFolderButtonHandler() {
+void DuplicatesScreenController::removeFolderButtonHandler(const QString& folderName) {
+    AppStore::get()->dispatch(
+        InputFoldersListActions::removeFolderNameAction(folderName)
+    );
+}
+
+void DuplicatesScreenController::startScanningButtonHandler() {
     qDebug() << __PRETTY_FUNCTION__;
+
+    auto inputFoldersListState = AppStore::get()->inputFoldersListState;
+    auto inputFolderNamesList = inputFoldersListState->folderNames->get();
+    for (int i = 0; i < inputFolderNamesList.length(); ++i) {
+        qDebug() << __PRETTY_FUNCTION__ << inputFolderNamesList.at(i);
+    }
 }

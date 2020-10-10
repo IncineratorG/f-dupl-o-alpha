@@ -3,9 +3,10 @@
 #include <QDebug>
 #include <QList>
 
+#include "utils/common/localization/Localization.h"
 #include "native-screens/test/TestScreen.h"
 #include "native-screens/duplicates/DuplicatesScreen.h"
-#include "utils/common/localization/Localization.h"
+#include "native-components/specific/duplicates/input-folders-list/InputFoldersListComponent.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,9 +20,13 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("l", localization);
 
     QList<NativeScreen*> nativeScreens({
-                                           new TestScreen(engine.rootContext()),
-                                           new DuplicatesScreen(engine.rootContext())
-                                       });
+        new TestScreen(engine.rootContext()),
+        new DuplicatesScreen(engine.rootContext())
+    });
+
+    QList<NativeComponent*> nativeComponents({
+        new InputFoldersListComponent(engine.rootContext()),
+    });
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty()) {

@@ -7,20 +7,25 @@ AppStore::AppStore()  {
 
     std::shared_ptr<TestReducer> testReducer(new TestReducer());
     testState = std::make_shared<TestState>();
-    testStore = std::make_shared<Store>(testReducer, testState);
+    mTestStore = std::make_shared<Store>(testReducer, testState);
 
     std::shared_ptr<InputFoldersListReducer> inputFoldersListReducer(new InputFoldersListReducer());
     inputFoldersListState = std::make_shared<InputFoldersListState>();
-    inputFoldersListStore = std::make_shared<Store>(inputFoldersListReducer, inputFoldersListState);
+    mInputFoldersListStore = std::make_shared<Store>(inputFoldersListReducer, inputFoldersListState);
 
     std::shared_ptr<SystemReducer> systemReducer(new SystemReducer());
     systemState = std::make_shared<SystemState>();
-    systemStore = std::make_shared<Store>(systemReducer, systemState);
+    mSystemStore = std::make_shared<Store>(systemReducer, systemState);
+
+    std::shared_ptr<DuplicatesFinderReducer> duplicatesFinderReducer(new DuplicatesFinderReducer());
+    duplicatesFinderState = std::make_shared<DuplicatesFinderState>();
+    mDuplicatesFinderStore = std::make_shared<Store>(duplicatesFinderReducer, duplicatesFinderState);
 
     mStores.append({
-                    testStore,
-                    inputFoldersListStore,
-                    systemStore
+                    mTestStore,
+                    mInputFoldersListStore,
+                    mSystemStore,
+                    mDuplicatesFinderStore
                 });
 }
 

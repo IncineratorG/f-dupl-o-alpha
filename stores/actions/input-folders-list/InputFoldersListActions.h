@@ -9,6 +9,7 @@ class InputFoldersListActions
 {
 public:
     static std::shared_ptr<Action> addFolderNameAction(const QString& folderName);
+    static std::shared_ptr<Action> removeFolderNameAction(const QString& folderName);
 };
 
 #endif // INPUTFOLDERSLISTACTIONS_H

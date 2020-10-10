@@ -6,5 +6,8 @@
         <file>ui/screens/duplicates/DuplicatesScreen.qml</file>
         <file>ui/components/specific/duplicates/input-folders/InputFolders.qml</file>
         <file>ui/components/specific/duplicates/input-folders-list/InputFoldersList.qml</file>
+        <file>ui/components/specific/duplicates/input-folders-list/input-folders-list-item/InputFoldersListItem.qml</file>
+        <file>ui/components/specific/duplicates/scanning-results/ScanningResults.qml</file>
+        <file>ui/components/specific/duplicates/scanning-controls/ScanningControls.qml</file>
     </qresource>
 </RCC>

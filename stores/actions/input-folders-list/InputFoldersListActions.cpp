@@ -8,3 +8,11 @@ std::shared_ptr<Action> InputFoldersListActions::addFolderNameAction(const QStri
                                     InputFoldersListActionTypes::ADD_FOLDER_NAME,
                                     payload);
 }
+
+std::shared_ptr<Action> InputFoldersListActions::removeFolderNameAction(const QString& folderName) {
+    Payload payload(folderName);
+
+    return std::make_shared<Action>(InputFoldersListActionTypes::STORE_MARK,
+                                    InputFoldersListActionTypes::REMOVE_FOLDER_NAME,
+                                    payload);
+}

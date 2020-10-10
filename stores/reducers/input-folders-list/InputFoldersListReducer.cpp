@@ -9,7 +9,7 @@ InputFoldersListReducer::InputFoldersListReducer() {
 }
 
 void InputFoldersListReducer::reduce(std::shared_ptr<State> state,
-                         std::shared_ptr<Action> action) {
+                                     std::shared_ptr<Action> action) {
     if (action->storeMark() != InputFoldersListActionTypes::STORE_MARK) {
         return;
     }
@@ -23,12 +23,41 @@ void InputFoldersListReducer::reduce(std::shared_ptr<State> state,
 
                 currentState->update([currentState, folderName] () {
                     auto folderNames = currentState->folderNames->get();
+                    for (int i = 0; i < folderNames.length(); ++i) {
+                        if (folderNames.at(i) == folderName) {
+                            return;
+                        }
+                    }
+
                     folderNames.append(folderName);
                     currentState->folderNames->set(folderNames);
                 });
             } catch (const std::bad_any_cast& e) {
                 qDebug() << __PRETTY_FUNCTION__ << "->ADD_FOLDER_NAME->BAD_ANY_CAST";
             }
+
+            break;
+        }
+
+        case (InputFoldersListActionTypes::REMOVE_FOLDER_NAME): {
+            try {
+                auto folderName = std::any_cast<QString>(action->payload().getDefault());
+
+                currentState->update([currentState, folderName] () {
+                    auto folderNames = currentState->folderNames->get();
+                    for (int i = 0; i < folderNames.length(); ++i) {
+                        if (folderNames.at(i) == folderName) {
+                            folderNames.removeAt(i);
+                            break;
+                        }
+                    }
+
+                    currentState->folderNames->set(folderNames);
+                });
+            } catch (const std::bad_any_cast& e) {
+                qDebug() << __PRETTY_FUNCTION__ << "->REMOVE_FOLDER_NAME->BAD_ANY_CAST";
+            }
+
 
             break;
         }

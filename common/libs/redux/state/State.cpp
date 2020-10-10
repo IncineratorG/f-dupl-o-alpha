@@ -21,11 +21,6 @@ void State::initState() {
 
 std::function<void(void)> State::select(Selector selector) {
     QList<int> selectorPropIds = selector.propIds();
-    // ===
-    for (int i = 0; i < selectorPropIds.length(); ++i) {
-        qDebug() << __PRETTY_FUNCTION__ << selectorPropIds.at(i);
-    }
-    // ===
 
     for (int i = 0; i < selectorPropIds.length(); ++i) {
         int selectorPropId = selectorPropIds.at(i);

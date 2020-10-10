@@ -9,6 +9,8 @@ Localization::Localization(QQmlEngine* engine)
     ruLocalization.insert("InputFolders_addFolderButton", "Добавить");
     ruLocalization.insert("InputFolders_removeFolderButton", "Удалить");
     ruLocalization.insert("InputFolders_fileDialogTitle", "Выберите папку");
+    ruLocalization.insert("ScanningControls_toggleScanningButton_startScanning", "Начать");
+    ruLocalization.insert("ScanningControls_toggleScanningButton_stopScanning", "Остановить");
 
     mLocalizations.insert("ru", ruLocalization);
 
