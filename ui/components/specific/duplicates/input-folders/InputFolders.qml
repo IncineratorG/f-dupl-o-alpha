@@ -43,7 +43,9 @@ Item {
             Button {
                 id: addFolderButton
 
-                anchors.centerIn: parent
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
 
                 text: l.t("InputFolders_addFolderButton")
 

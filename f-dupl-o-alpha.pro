@@ -55,7 +55,11 @@ SOURCES += \
     stores/states/duplicates-finder/DuplicatesFinderState.cpp \
     stores/reducers/duplicates-finder/DuplicatesFinderReducer.cpp \
     stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.cpp \
-    stores/actions/duplicates-finder/DuplicatesFinderActions.cpp
+    stores/actions/duplicates-finder/DuplicatesFinderActions.cpp \
+    common/libs/service/Service.cpp \
+    services/Services.cpp \
+    services/duplicates-finder/DuplicatesFinderService.cpp \
+    stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.cpp
 
 RESOURCES += qml.qrc
 
@@ -112,5 +116,9 @@ HEADERS += \
     stores/states/duplicates-finder/DuplicatesFinderState.h \
     stores/reducers/duplicates-finder/DuplicatesFinderReducer.h \
     stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.h \
-    stores/actions/duplicates-finder/DuplicatesFinderActions.h
+    stores/actions/duplicates-finder/DuplicatesFinderActions.h \
+    common/libs/service/Service.h \
+    services/Services.h \
+    services/duplicates-finder/DuplicatesFinderService.h \
+    stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.h
 

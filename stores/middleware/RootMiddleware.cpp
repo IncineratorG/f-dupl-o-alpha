@@ -1,17 +1,18 @@
 #include "RootMiddleware.h"
+#include "stores/middleware/test/TestMiddleware.h"
+#include "stores/middleware/test/TestEventsMiddleware.h"
+#include "stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.h"
 
 RootMiddleware::RootMiddleware() {
-    mTestMiddleware = std::make_shared<TestMiddleware>();
+    mMiddlewares.append({
+        std::make_shared<TestMiddleware>(),
+        std::make_shared<DuplicatesFinderMiddleware>()
+    });
 
-    mMiddlewares.append(
-                    mTestMiddleware
-                );
-
-    mTestEventsMiddleware = std::make_shared<TestEventsMiddleware>();
 
     mEventsMiddlewares.append(
-                    mTestEventsMiddleware
-                );
+        std::make_shared<TestEventsMiddleware>()
+    );
 
     for (int i = 0; i < mEventsMiddlewares.length(); ++i) {
         mEventsMiddlewares.at(i)->init();

@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QList>
 
+#include "services/Services.h"
 #include "utils/common/localization/Localization.h"
 #include "native-screens/test/TestScreen.h"
 #include "native-screens/duplicates/DuplicatesScreen.h"
