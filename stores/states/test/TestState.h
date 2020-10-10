@@ -5,8 +5,6 @@
 #include "common/libs/redux/prop/StatePropLike.h"
 #include "common/libs/redux/prop/StateProp.h"
 
-#include <memory>
-
 class TestState : public State
 {
 public:

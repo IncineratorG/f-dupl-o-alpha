@@ -14,14 +14,14 @@ void TestReducer::reduce(std::shared_ptr<State> state,
         return;
     }
 
-    auto testState = std::static_pointer_cast<TestState>(state);
+    auto currentState = std::dynamic_pointer_cast<TestState>(state);
 
     switch (action->type()) {
         case (TestActionTypes::FIRST_TEST): {
             qDebug() << __PRETTY_FUNCTION__;
 
-            testState->update([testState] (){
-                testState->prop1->set(3);
+            currentState->update([currentState] (){
+                currentState->prop1->set(3);
             });
 
             break;

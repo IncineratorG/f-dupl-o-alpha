@@ -9,9 +9,14 @@ AppStore::AppStore()  {
     testState = std::make_shared<TestState>();
     testStore = std::make_shared<Store>(testReducer, testState);
 
-    mStores.append(
-                    testStore
-                );
+    std::shared_ptr<InputFoldersListReducer> inputFoldersListReducer(new InputFoldersListReducer());
+    inputFoldersListState = std::make_shared<InputFoldersListState>();
+    inputFoldersListStore = std::make_shared<Store>(inputFoldersListReducer, inputFoldersListState);
+
+    mStores.append({
+                    testStore,
+                    inputFoldersListStore
+                });
 }
 
 AppStore* AppStore::get() {

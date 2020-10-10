@@ -37,7 +37,14 @@ SOURCES += \
     stores/actions/test/TestActions.cpp \
     stores/action-types/test/TestActionTypes.cpp \
     common/libs/redux/selector/SelectorIdsGenerator.cpp \
-    common/libs/redux/state/StatePropIdsGenerator.cpp
+    common/libs/redux/state/StatePropIdsGenerator.cpp \
+    utils/common/localization/Localization.cpp \
+    native-screens/duplicates/DuplicatesScreen.cpp \
+    native-screens/duplicates/controllers/DuplicatesScreenController.cpp \
+    native-screens/duplicates/models/DuplicateScreenModel.cpp \
+    stores/states/input-folders-list/InputFoldersListState.cpp \
+    stores/reducers/input-folders-list/InputFoldersListReducer.cpp \
+    stores/action-types/input-folders-list/InputFoldersListActionTypes.cpp
 
 RESOURCES += qml.qrc
 
@@ -76,5 +83,12 @@ HEADERS += \
     stores/actions/test/TestActions.h \
     stores/action-types/test/TestActionTypes.h \
     common/libs/redux/selector/SelectorIdsGenerator.h \
-    common/libs/redux/state/StatePropIdsGenerator.h
+    common/libs/redux/state/StatePropIdsGenerator.h \
+    utils/common/localization/Localization.h \
+    native-screens/duplicates/DuplicatesScreen.h \
+    native-screens/duplicates/controllers/DuplicatesScreenController.h \
+    native-screens/duplicates/models/DuplicateScreenModel.h \
+    stores/states/input-folders-list/InputFoldersListState.h \
+    stores/reducers/input-folders-list/InputFoldersListReducer.h \
+    stores/action-types/input-folders-list/InputFoldersListActionTypes.h
 

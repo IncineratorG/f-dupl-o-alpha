@@ -3,5 +3,8 @@
         <file>main.qml</file>
         <file>ui/screens/test/TestScreen.qml</file>
         <file>ui/components/common/coordinators/main-cooridnator/MainCoordinator.qml</file>
+        <file>ui/screens/duplicates/DuplicatesScreen.qml</file>
+        <file>ui/components/specific/duplicates/input-folders/InputFolders.qml</file>
+        <file>ui/components/specific/duplicates/input-folders-list/InputFoldersList.qml</file>
     </qresource>
 </RCC>
