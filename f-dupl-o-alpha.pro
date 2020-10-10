@@ -41,10 +41,15 @@ SOURCES += \
     utils/common/localization/Localization.cpp \
     native-screens/duplicates/DuplicatesScreen.cpp \
     native-screens/duplicates/controllers/DuplicatesScreenController.cpp \
-    native-screens/duplicates/models/DuplicateScreenModel.cpp \
     stores/states/input-folders-list/InputFoldersListState.cpp \
     stores/reducers/input-folders-list/InputFoldersListReducer.cpp \
-    stores/action-types/input-folders-list/InputFoldersListActionTypes.cpp
+    stores/action-types/input-folders-list/InputFoldersListActionTypes.cpp \
+    stores/states/system/SystemState.cpp \
+    stores/reducers/system/SystemReducer.cpp \
+    stores/action-types/system/SystemActionTypes.cpp \
+    common/libs/native-component/NativeComponent.cpp \
+    native-screens/duplicates/models/DuplicatesScreenModel.cpp \
+    stores/actions/input-folders-list/InputFoldersListActions.cpp
 
 RESOURCES += qml.qrc
 
@@ -87,8 +92,13 @@ HEADERS += \
     utils/common/localization/Localization.h \
     native-screens/duplicates/DuplicatesScreen.h \
     native-screens/duplicates/controllers/DuplicatesScreenController.h \
-    native-screens/duplicates/models/DuplicateScreenModel.h \
     stores/states/input-folders-list/InputFoldersListState.h \
     stores/reducers/input-folders-list/InputFoldersListReducer.h \
-    stores/action-types/input-folders-list/InputFoldersListActionTypes.h
+    stores/action-types/input-folders-list/InputFoldersListActionTypes.h \
+    stores/states/system/SystemState.h \
+    stores/reducers/system/SystemReducer.h \
+    stores/action-types/system/SystemActionTypes.h \
+    common/libs/native-component/NativeComponent.h \
+    native-screens/duplicates/models/DuplicatesScreenModel.h \
+    stores/actions/input-folders-list/InputFoldersListActions.h
 

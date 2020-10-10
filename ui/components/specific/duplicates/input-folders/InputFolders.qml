@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.12
+import QtQuick.Dialogs 1.3
 
 import "../input-folders-list"
 
@@ -42,7 +43,7 @@ Item {
                 text: l.t("InputFolders_addFolderButton")
 
                 onClicked: {
-                    DuplicatesScreenController.addFolderButtonHandler()
+                    fileDialog.open()
                 }
             }
 
@@ -60,6 +61,20 @@ Item {
                     DuplicatesScreenController.removeFolderButtonHandler()
                 }
             }
+        }
+    }
+
+    FileDialog {
+        id: fileDialog
+
+        visible: false
+
+        selectFolder: true
+
+        title: l.t("InputFolders_fileDialogTitle")
+
+        onAccepted: {
+            DuplicatesScreenController.addFolderHandler(fileDialog.fileUrls)
         }
     }
 }

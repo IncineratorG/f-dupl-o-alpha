@@ -10,7 +10,7 @@ class DuplicatesScreenController : public QObject
 public:
     DuplicatesScreenController();
 
-    Q_INVOKABLE void addFolderButtonHandler();
+    Q_INVOKABLE void addFolderHandler(const QString& folderUrl);
     Q_INVOKABLE void removeFolderButtonHandler();
 };
 
