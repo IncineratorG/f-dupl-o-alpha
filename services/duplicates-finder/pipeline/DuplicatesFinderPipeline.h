@@ -1,7 +1,12 @@
 #ifndef DUPLICATESFINDERPIPELINE_H
 #define DUPLICATESFINDERPIPELINE_H
 
+#include "services/duplicates-finder/pipeline/operation/Operation.h"
+
 #include <QObject>
+#include <QList>
+
+#include <memory>
 
 class DuplicatesFinderPipeline : public QObject
 {
@@ -23,6 +28,8 @@ public slots:
 
 private:
     void doWork();
+
+    QList<std::shared_ptr<Operation>> mOperation;
 };
 
 #endif // DUPLICATESFINDERPIPELINE_H
