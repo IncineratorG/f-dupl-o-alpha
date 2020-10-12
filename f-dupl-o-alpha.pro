@@ -59,7 +59,11 @@ SOURCES += \
     common/libs/service/Service.cpp \
     services/Services.cpp \
     services/duplicates-finder/DuplicatesFinderService.cpp \
-    stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.cpp
+    stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.cpp \
+    services/duplicates-finder/pipeline/DuplicatesFinderPipeline.cpp \
+    utils/common/notifier/Notifier.cpp \
+    services/duplicates-finder/event-types/DuplicatesFinderServiceEventTypes.cpp \
+    stores/middleware/duplicates-finder/DuplicatesFinderEventsMiddleware.cpp
 
 RESOURCES += qml.qrc
 
@@ -120,5 +124,9 @@ HEADERS += \
     common/libs/service/Service.h \
     services/Services.h \
     services/duplicates-finder/DuplicatesFinderService.h \
-    stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.h
+    stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.h \
+    services/duplicates-finder/pipeline/DuplicatesFinderPipeline.h \
+    utils/common/notifier/Notifier.h \
+    services/duplicates-finder/event-types/DuplicatesFinderServiceEventTypes.h \
+    stores/middleware/duplicates-finder/DuplicatesFinderEventsMiddleware.h
 

@@ -16,9 +16,6 @@ public:
 private:
     QList<std::shared_ptr<Middleware>> mMiddlewares;
     QList<std::shared_ptr<EventsMiddleware>> mEventsMiddlewares;
-
-//    std::shared_ptr<Middleware> mTestMiddleware;
-//    std::shared_ptr<EventsMiddleware> mTestEventsMiddleware;
 };
 
 #endif // ROOTMIDDLEWARE_H

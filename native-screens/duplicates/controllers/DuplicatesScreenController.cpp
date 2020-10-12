@@ -1,6 +1,7 @@
 #include "DuplicatesScreenController.h"
 #include "stores/AppStore.h"
 #include "stores/actions/input-folders-list/InputFoldersListActions.h"
+#include "stores/actions/duplicates-finder/DuplicatesFinderActions.h"
 
 #include <QList>
 #include <QString>
@@ -32,9 +33,13 @@ void DuplicatesScreenController::removeFolderButtonHandler(const QString& folder
 void DuplicatesScreenController::startScanningButtonHandler() {
     qDebug() << __PRETTY_FUNCTION__;
 
-    auto inputFoldersListState = AppStore::get()->inputFoldersListState;
-    auto inputFolderNamesList = inputFoldersListState->folderNames->get();
-    for (int i = 0; i < inputFolderNamesList.length(); ++i) {
-        qDebug() << __PRETTY_FUNCTION__ << inputFolderNamesList.at(i);
-    }
+    AppStore::get()->dispatch(
+        DuplicatesFinderActions::findDuplicatesAction()
+    );
+
+//    auto inputFoldersListState = AppStore::get()->inputFoldersListState;
+//    auto inputFolderNamesList = inputFoldersListState->folderNames->get();
+//    for (int i = 0; i < inputFolderNamesList.length(); ++i) {
+//        qDebug() << __PRETTY_FUNCTION__ << inputFolderNamesList.at(i);
+//    }
 }

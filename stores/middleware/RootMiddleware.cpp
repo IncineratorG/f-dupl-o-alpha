@@ -2,6 +2,7 @@
 #include "stores/middleware/test/TestMiddleware.h"
 #include "stores/middleware/test/TestEventsMiddleware.h"
 #include "stores/middleware/duplicates-finder/DuplicatesFinderMiddleware.h"
+#include "stores/middleware/duplicates-finder/DuplicatesFinderEventsMiddleware.h"
 
 RootMiddleware::RootMiddleware() {
     mMiddlewares.append({
@@ -10,9 +11,10 @@ RootMiddleware::RootMiddleware() {
     });
 
 
-    mEventsMiddlewares.append(
-        std::make_shared<TestEventsMiddleware>()
-    );
+    mEventsMiddlewares.append({
+        std::make_shared<TestEventsMiddleware>(),
+        std::make_shared<DuplicatesFinderEventsMiddleware>()
+    });
 
     for (int i = 0; i < mEventsMiddlewares.length(); ++i) {
         mEventsMiddlewares.at(i)->init();
