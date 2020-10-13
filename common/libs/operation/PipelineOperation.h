@@ -1,7 +1,7 @@
 #ifndef PIPELINEOPERATION_H
 #define PIPELINEOPERATION_H
 
-#include "services/duplicates-finder/pipeline/operation/Operation.h"
+#include "common/libs/operation/Operation.h"
 #include "utils/common/notifier/Notifier.h"
 
 #include <QString>
@@ -27,8 +27,6 @@ public:
     O output() const {
         return mOutput;
     }
-
-    virtual void run() = 0;
 
 protected:
     I mInput;

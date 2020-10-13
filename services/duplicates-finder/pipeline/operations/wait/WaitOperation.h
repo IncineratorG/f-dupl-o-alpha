@@ -1,7 +1,7 @@
 #ifndef WAITOPERATION_H
 #define WAITOPERATION_H
 
-#include "services/duplicates-finder/pipeline/operation/PipelineOperation.h"
+#include "common/libs/operation/PipelineOperation.h"
 
 class WaitOperation : public PipelineOperation<void*, void*>
 {

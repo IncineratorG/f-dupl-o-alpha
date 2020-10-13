@@ -64,9 +64,11 @@ SOURCES += \
     utils/common/notifier/Notifier.cpp \
     services/duplicates-finder/event-types/DuplicatesFinderServiceEventTypes.cpp \
     stores/middleware/duplicates-finder/DuplicatesFinderEventsMiddleware.cpp \
-    services/duplicates-finder/pipeline/operation/Operation.cpp \
-    services/duplicates-finder/pipeline/operation/PipelineOperation.cpp \
-    services/duplicates-finder/pipeline/operation/pipeline-operations/wait/WaitOperation.cpp
+    common/libs/operation/Operation.cpp \
+    common/libs/operation/PipelineOperation.cpp \
+    services/duplicates-finder/pipeline/operations/wait/WaitOperation.cpp \
+    services/duplicates-finder/pipeline/operations-sequence/OperationsSequence.cpp \
+    services/duplicates-finder/pipeline/operations-transition/OperationsTransition.cpp
 
 RESOURCES += qml.qrc
 
@@ -132,7 +134,9 @@ HEADERS += \
     utils/common/notifier/Notifier.h \
     services/duplicates-finder/event-types/DuplicatesFinderServiceEventTypes.h \
     stores/middleware/duplicates-finder/DuplicatesFinderEventsMiddleware.h \
-    services/duplicates-finder/pipeline/operation/Operation.h \
-    services/duplicates-finder/pipeline/operation/PipelineOperation.h \
-    services/duplicates-finder/pipeline/operation/pipeline-operations/wait/WaitOperation.h
+    common/libs/operation/Operation.h \
+    common/libs/operation/PipelineOperation.h \
+    services/duplicates-finder/pipeline/operations/wait/WaitOperation.h \
+    services/duplicates-finder/pipeline/operations-sequence/OperationsSequence.h \
+    services/duplicates-finder/pipeline/operations-transition/OperationsTransition.h
 
