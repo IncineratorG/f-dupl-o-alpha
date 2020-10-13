@@ -4,6 +4,7 @@
 #include <QList>
 
 #include "services/Services.h"
+#include "services/duplicates-finder/data/input-path/InputPath.h"
 #include "utils/common/localization/Localization.h"
 #include "native-screens/test/TestScreen.h"
 #include "native-screens/duplicates/DuplicatesScreen.h"
@@ -16,6 +17,8 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+    qRegisterMetaType<QList<InputPath>>("QList<InputPath>");
 
     auto localization = new Localization(&engine);
     engine.rootContext()->setContextProperty("l", localization);

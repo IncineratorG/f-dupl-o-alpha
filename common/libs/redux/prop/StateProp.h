@@ -19,7 +19,7 @@ public:
         mVal = val;
     }
 
-    T get() const {
+    T value() const {
         return mVal;
     }
 

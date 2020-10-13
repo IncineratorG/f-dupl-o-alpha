@@ -10,7 +10,7 @@ InputFoldersListModel::InputFoldersListModel() {
             {inputFoldersListState->folderNames},
             [this, inputFoldersListState] () {
                 beginResetModel();
-                folderNames = inputFoldersListState->folderNames->get();
+                folderNames = inputFoldersListState->folderNames->value();
                 endResetModel();
             }
         )

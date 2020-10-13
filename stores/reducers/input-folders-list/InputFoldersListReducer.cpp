@@ -17,47 +17,71 @@ void InputFoldersListReducer::reduce(std::shared_ptr<State> state,
     auto currentState = std::dynamic_pointer_cast<InputFoldersListState>(state);
 
     switch (action->type()) {
-        case (InputFoldersListActionTypes::ADD_FOLDER_NAME): {
+        case (InputFoldersListActionTypes::ADD_FOLDER): {
             try {
-                auto folderName = std::any_cast<QString>(action->payload().getDefault());
+                auto folderName = std::any_cast<QString>(action->payload().get("folderName"));
+                auto includeSubpath = std::any_cast<bool>(action->payload().get("includeSubpath"));
 
-                currentState->update([currentState, folderName] () {
-                    auto folderNames = currentState->folderNames->get();
-                    for (int i = 0; i < folderNames.length(); ++i) {
-                        if (folderNames.at(i) == folderName) {
+                currentState->update([currentState, folderName, includeSubpath] () {
+                    auto inputFolders = currentState->inputFolders->value();
+                    for (int i = 0; i < inputFolders.length(); ++i) {
+                        if (inputFolders.at(i).path() == folderName) {
                             return;
                         }
                     }
 
-                    folderNames.append(folderName);
-                    currentState->folderNames->set(folderNames);
+                    inputFolders.append(InputPath(folderName, includeSubpath));
+                    currentState->inputFolders->set(inputFolders);
                 });
             } catch (const std::bad_any_cast& e) {
-                qDebug() << __PRETTY_FUNCTION__ << "->ADD_FOLDER_NAME->BAD_ANY_CAST";
+                qDebug() << __PRETTY_FUNCTION__ << "->ADD_FOLDER->BAD_ANY_CAST";
             }
 
             break;
         }
 
-        case (InputFoldersListActionTypes::REMOVE_FOLDER_NAME): {
+        case (InputFoldersListActionTypes::REMOVE_FOLDER): {
             try {
                 auto folderName = std::any_cast<QString>(action->payload().getDefault());
 
                 currentState->update([currentState, folderName] () {
-                    auto folderNames = currentState->folderNames->get();
-                    for (int i = 0; i < folderNames.length(); ++i) {
-                        if (folderNames.at(i) == folderName) {
-                            folderNames.removeAt(i);
+                    auto inputFolders = currentState->inputFolders->value();
+                    for (int i = 0; i < inputFolders.length(); ++i) {
+                        if (inputFolders.at(i).path() == folderName) {
+                            inputFolders.removeAt(i);
                             break;
                         }
                     }
 
-                    currentState->folderNames->set(folderNames);
+                    currentState->inputFolders->set(inputFolders);
                 });
             } catch (const std::bad_any_cast& e) {
-                qDebug() << __PRETTY_FUNCTION__ << "->REMOVE_FOLDER_NAME->BAD_ANY_CAST";
+                qDebug() << __PRETTY_FUNCTION__ << "->REMOVE_FOLDER->BAD_ANY_CAST";
             }
 
+
+            break;
+        }
+
+        case (InputFoldersListActionTypes::UPDATE_FOLDER): {
+            try {
+                auto folderName = std::any_cast<QString>(action->payload().get("folderName"));
+                auto includeSubpath = std::any_cast<bool>(action->payload().get("includeSubpath"));
+
+                currentState->update([currentState, folderName, includeSubpath] () {
+                    auto inputFolders = currentState->inputFolders->value();
+                    for (int i = 0; i < inputFolders.length(); ++i) {
+                        if (inputFolders.at(i).path() == folderName) {
+                            inputFolders.replace(i, InputPath(folderName, includeSubpath));
+                            break;
+                        }
+                    }
+
+                    currentState->inputFolders->set(inputFolders);
+                });
+            } catch (const std::bad_any_cast& e) {
+                qDebug() << __PRETTY_FUNCTION__ << "->UPDATE_FOLDER->BAD_ANY_CAST";
+            }
 
             break;
         }

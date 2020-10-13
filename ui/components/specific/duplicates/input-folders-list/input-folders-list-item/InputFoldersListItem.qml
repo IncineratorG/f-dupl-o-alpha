@@ -32,8 +32,33 @@ Rectangle {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.right: parent.right
+        anchors.margins: 4
 
-        width: 50
+        width: 100
+
+        Rectangle {
+            id: includeSubpathIndicator
+
+            width: 20
+            height: 20
+
+            border.width: 1
+            border.color: "green"
+
+            color: includeSubpath ? "green" : "white"
+
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: removeButton.left
+            anchors.rightMargin: 4
+
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: {
+                    DuplicatesScreenController.setIncludeFolderSubpaths(folderName, !includeSubpath)
+                }
+            }
+        }
 
         Rectangle {
             id: removeButton
@@ -43,7 +68,10 @@ Rectangle {
 
             color: 'red'
 
-            anchors.centerIn: parent
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+
+//            anchors.centerIn: parent
 
             MouseArea {
                 anchors.fill: parent

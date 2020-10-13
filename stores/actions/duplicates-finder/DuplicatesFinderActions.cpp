@@ -1,11 +1,13 @@
 #include "DuplicatesFinderActions.h"
 #include "stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.h"
 
-std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesAction() {
+std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesAction(const QList<InputPath>& inputPaths) {
     Payload payload;
+    payload.set("inputPaths", inputPaths);
 
     return std::make_shared<Action>(DuplicatesFinderActionTypes::STORE_MARK,
-                                    DuplicatesFinderActionTypes::FIND_DUPLICATES);
+                                    DuplicatesFinderActionTypes::FIND_DUPLICATES,
+                                    payload);
 }
 
 std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesBeginAction() {

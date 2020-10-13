@@ -6,7 +6,7 @@
 DuplicatesFinderService::DuplicatesFinderService() {
     mPipeline.moveToThread(&mPipelineThread);
 
-    connect(this, SIGNAL(startPipeline()), &mPipeline, SLOT(startPipeline()));
+    connect(this, SIGNAL(startPipeline(const QList<InputPath>)), &mPipeline, SLOT(startPipeline(const QList<InputPath>)));
     connect(this, SIGNAL(pausePipeline()), &mPipeline, SLOT(pausePipeline()));
     connect(this, SIGNAL(stopPipeline()), &mPipeline, SLOT(stopPipeline()));
 
@@ -27,10 +27,10 @@ std::function<void(void)> DuplicatesFinderService::subscribe(const QString& even
     return mNotifier.subscribe(event, handler);
 }
 
-void DuplicatesFinderService::start() {
-    qDebug() << __PRETTY_FUNCTION__;
+void DuplicatesFinderService::start(const QList<InputPath> inputPaths) {
+//    qDebug() << __PRETTY_FUNCTION__ << inputPaths.length();
 
-    emit startPipeline();
+    emit startPipeline(inputPaths);
 }
 
 void DuplicatesFinderService::pause() {

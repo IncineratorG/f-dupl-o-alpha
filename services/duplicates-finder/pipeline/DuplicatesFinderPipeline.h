@@ -3,6 +3,7 @@
 
 #include "common/libs/operation/Operation.h"
 #include "services/duplicates-finder/pipeline/operations-sequence/OperationsSequence.h"
+#include "services/duplicates-finder/data/input-path/InputPath.h"
 
 #include <QObject>
 #include <QList>
@@ -23,13 +24,13 @@ signals:
     void pipelineFinished();
 
 public slots:
-    void startPipeline();
+    void startPipeline(const QList<InputPath> inputPaths);
     void pausePipeline();
     void stopPipeline();
 
 private:
     void doWork();
-
+    QList<InputPath> mInputPaths;
     OperationsSequence mOperationsSequence;
 };
 

@@ -20,7 +20,7 @@ TestScreenController::TestScreenController()
     auto testState = AppStore::get()->testState;
 
     testState->select(Selector({testState->prop1->propId()}, [testState] () {
-        qDebug() << __PRETTY_FUNCTION__ << testState->prop1->get();
+        qDebug() << __PRETTY_FUNCTION__ << testState->prop1->value();
     }));
 }
 

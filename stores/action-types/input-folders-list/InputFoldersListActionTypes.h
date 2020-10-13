@@ -8,8 +8,9 @@ class InputFoldersListActionTypes
 public:
     static const QString STORE_MARK;
 
-    static constexpr int ADD_FOLDER_NAME = 1;
-    static constexpr int REMOVE_FOLDER_NAME = 2;
+    static constexpr int ADD_FOLDER = 1;
+    static constexpr int REMOVE_FOLDER = 2;
+    static constexpr int UPDATE_FOLDER = 3;
 };
 
 #endif // INPUTFOLDERSLISTACTIONTYPES_H
