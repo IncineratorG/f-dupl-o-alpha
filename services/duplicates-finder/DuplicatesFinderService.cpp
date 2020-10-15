@@ -13,7 +13,7 @@ DuplicatesFinderService::DuplicatesFinderService() {
     connect(&mPipeline, SIGNAL(pipelineStarted()), this, SLOT(onPipelineStarted()));
     connect(&mPipeline, SIGNAL(pipelinePaused()), this, SLOT(onPipelinePaused()));
     connect(&mPipeline, SIGNAL(pipelineStopped()), this, SLOT(onPipelineStopped()));
-    connect(&mPipeline, SIGNAL(pipelineFinished()), this, SLOT(onPipelineFinished()));
+    connect(&mPipeline, SIGNAL(pipelineFinished(DuplicatesList)), this, SLOT(onPipelineFinished(DuplicatesList)));
 
     mPipelineThread.start();
 }
@@ -63,8 +63,6 @@ void DuplicatesFinderService::onPipelineStopped() {
     mNotifier.notify(DuplicatesFinderServiceEventTypes::SERVICE_STOPPED, nullptr);
 }
 
-void DuplicatesFinderService::onPipelineFinished() {
-    qDebug() << __PRETTY_FUNCTION__;
-
-    mNotifier.notify(DuplicatesFinderServiceEventTypes::SERVICE_FINISHED, nullptr);
+void DuplicatesFinderService::onPipelineFinished(DuplicatesList duplicates) {
+    mNotifier.notify(DuplicatesFinderServiceEventTypes::SERVICE_FINISHED, duplicates);
 }

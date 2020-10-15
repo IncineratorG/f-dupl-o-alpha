@@ -9,9 +9,9 @@ InputFoldersListState::InputFoldersListState() {
 
 QList<std::shared_ptr<StatePropLike>> InputFoldersListState::stateProps() const {
     QList<std::shared_ptr<StatePropLike>> props({
-                                                    folderNames,
-                                                    inputFolders
-                                                });
+        folderNames,
+        inputFolders
+    });
 
     return props;
 }

@@ -17,16 +17,18 @@ std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesBeginAction() {
                                     DuplicatesFinderActionTypes::FIND_DUPLICATES_BEGIN);
 }
 
-std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesFinishedAction() {
-    Payload payload;
+std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesFinishedAction(const DuplicatesList& duplicates) {
+    Payload payload(duplicates);
 
     return std::make_shared<Action>(DuplicatesFinderActionTypes::STORE_MARK,
-                                    DuplicatesFinderActionTypes::FIND_DUPLICATES_FINISHED);
+                                    DuplicatesFinderActionTypes::FIND_DUPLICATES_FINISHED,
+                                    payload);
 }
 
-std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesErrorAction() {
-    Payload payload;
+std::shared_ptr<Action> DuplicatesFinderActions::findDuplicatesErrorAction(const Error& error) {
+    Payload payload(error);
 
     return std::make_shared<Action>(DuplicatesFinderActionTypes::STORE_MARK,
-                                    DuplicatesFinderActionTypes::FIND_DUPLICATES_ERROR);
+                                    DuplicatesFinderActionTypes::FIND_DUPLICATES_ERROR,
+                                    payload);
 }

@@ -4,6 +4,7 @@
 #include "common/libs/service/Service.h"
 #include "services/duplicates-finder/pipeline/DuplicatesFinderPipeline.h"
 #include "services/duplicates-finder/data/input-path/InputPath.h"
+#include "services/duplicates-finder/data/duplicates-list/DuplicatesList.h"
 #include "utils/common/notifier/Notifier.h"
 
 #include <QObject>
@@ -36,7 +37,7 @@ private slots:
     void onPipelineStarted();
     void onPipelinePaused();
     void onPipelineStopped();
-    void onPipelineFinished();
+    void onPipelineFinished(DuplicatesList duplicates);
 
 private:
     Notifier mNotifier;

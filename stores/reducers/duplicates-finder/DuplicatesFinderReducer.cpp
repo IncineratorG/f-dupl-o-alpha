@@ -1,6 +1,7 @@
 #include "DuplicatesFinderReducer.h"
 #include "stores/states/duplicates-finder/DuplicatesFinderState.h"
 #include "stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.h"
+#include "services/duplicates-finder/data/duplicates-list/DuplicatesList.h"
 
 #include <QDebug>
 
@@ -24,6 +25,14 @@ void DuplicatesFinderReducer::reduce(std::shared_ptr<State> state,
 
         case (DuplicatesFinderActionTypes::FIND_DUPLICATES_FINISHED): {
             qDebug() << __PRETTY_FUNCTION__ << "->FIND_DUPLICATES_FINISHED";
+
+            try {
+                auto duplicatesList = std::any_cast<DuplicatesList>(action->payload().getDefault());
+                qDebug() << __PRETTY_FUNCTION__ << duplicatesList.filesSize();
+            } catch (const std::bad_any_cast&) {
+                qDebug() << __PRETTY_FUNCTION__ << "->FIND_DUPLICATES_FINISHED->BAD_ANY_CAST";
+            }
+
             break;
         }
 

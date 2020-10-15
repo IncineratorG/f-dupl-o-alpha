@@ -74,7 +74,12 @@ SOURCES += \
     native-components/specific/duplicates/input-folders-list/models/InputFoldersWithSubpathsListModel.cpp \
     services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.cpp \
     services/duplicates-finder/data/file-info/FileInfo.cpp \
-    services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.cpp
+    services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.cpp \
+    services/duplicates-finder/data/duplicates-list/DuplicatesList.cpp \
+    common/data/error/Error.cpp \
+    services/duplicates-finder/data/errors/Errors.cpp \
+    services/duplicates-finder/data/errors/codes/ErrorCodes.cpp \
+    services/duplicates-finder/data/errors/descriptions/ErrorDescriptions.cpp
 
 RESOURCES += qml.qrc
 
@@ -149,5 +154,10 @@ HEADERS += \
     native-components/specific/duplicates/input-folders-list/models/InputFoldersWithSubpathsListModel.h \
     services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.h \
     services/duplicates-finder/data/file-info/FileInfo.h \
-    services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.h
+    services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.h \
+    services/duplicates-finder/data/duplicates-list/DuplicatesList.h \
+    common/data/error/Error.h \
+    services/duplicates-finder/data/errors/Errors.h \
+    services/duplicates-finder/data/errors/codes/ErrorCodes.h \
+    services/duplicates-finder/data/errors/descriptions/ErrorDescriptions.h
 
