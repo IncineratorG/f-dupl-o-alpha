@@ -1,4 +1,5 @@
 QT += quick
+QT += concurrent
 CONFIG += c++17
 
 # The following define makes your compiler emit warnings if you use
