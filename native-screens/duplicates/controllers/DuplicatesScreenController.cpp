@@ -30,6 +30,13 @@ void DuplicatesScreenController::removeFolderButtonHandler(const QString& folder
     );
 }
 
+void DuplicatesScreenController::setIncludeFolderSubpaths(const QString& folderName,
+                                                          const bool includeSubpath) {
+    AppStore::get()->dispatch(
+        InputFoldersListActions::updateFolderAction(folderName, includeSubpath)
+    );
+}
+
 void DuplicatesScreenController::startScanningButtonHandler() {
     qDebug() << __PRETTY_FUNCTION__;
 
@@ -41,17 +48,8 @@ void DuplicatesScreenController::startScanningButtonHandler() {
     AppStore::get()->dispatch(
         DuplicatesFinderActions::findDuplicatesAction(inputPaths)
     );
-
-//    auto inputFoldersListState = AppStore::get()->inputFoldersListState;
-//    auto inputFolderNamesList = inputFoldersListState->folderNames->get();
-//    for (int i = 0; i < inputFolderNamesList.length(); ++i) {
-//        qDebug() << __PRETTY_FUNCTION__ << inputFolderNamesList.at(i);
-//    }
 }
 
-void DuplicatesScreenController::setIncludeFolderSubpaths(const QString& folderName,
-                                                          const bool includeSubpath) {
-    AppStore::get()->dispatch(
-        InputFoldersListActions::updateFolderAction(folderName, includeSubpath)
-    );
+void DuplicatesScreenController::stopScanningButtonHandler() {
+    qDebug() << __PRETTY_FUNCTION__;
 }

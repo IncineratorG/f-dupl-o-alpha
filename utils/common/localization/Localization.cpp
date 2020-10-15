@@ -2,6 +2,8 @@
 
 #include <QDebug>
 
+Localization* Localization::mInstance = nullptr;
+
 Localization::Localization(QQmlEngine* engine)
     : mEngine(engine)
 {
@@ -15,6 +17,18 @@ Localization::Localization(QQmlEngine* engine)
     mLocalizations.insert("ru", ruLocalization);
 
     mCurrentLanguageCode = "ru";
+}
+
+Localization* Localization::createAndGet(QQmlEngine* engine) {
+    if (!mInstance) {
+        mInstance = new Localization(engine);
+    }
+
+    return mInstance;
+}
+
+Localization* Localization::get() {
+    return mInstance;
 }
 
 QString Localization::t(const QString& pattern) {

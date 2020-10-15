@@ -16,6 +16,7 @@ public:
                                               const bool includeSubpath);
 
     Q_INVOKABLE void startScanningButtonHandler();
+    Q_INVOKABLE void stopScanningButtonHandler();
 };
 
 #endif // DUPLICATESSCREENCONTROLLER_H

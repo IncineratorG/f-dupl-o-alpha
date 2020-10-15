@@ -10,6 +10,8 @@ InputFoldersWithSubpathsListModel::InputFoldersWithSubpathsListModel() {
                 beginResetModel();
                 mPaths = inputFoldersListState->inputFolders->value();
                 endResetModel();
+
+                emit sizeChanged(mPaths.length());
             }
         )
     );
@@ -48,4 +50,8 @@ QHash<int, QByteArray> InputFoldersWithSubpathsListModel::roleNames() const {
     roles[IncludeSubpathRole] = "includeSubpath";
 
     return roles;
+}
+
+int InputFoldersWithSubpathsListModel::size() const {
+    return mPaths.length();
 }

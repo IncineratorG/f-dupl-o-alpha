@@ -1,7 +1,10 @@
 import QtQuick 2.0
 
 Rectangle {
-    color: 'lightblue'
+    color: index % 2 === 0 ? 'white' : 'lightgrey'
+
+    border.width: 1
+    border.color: 'lightgrey'
 
     Item {
         id: folderNameContainer
@@ -20,7 +23,7 @@ Rectangle {
 
             text: folderName
             elide: Text.ElideMiddle
-            font.pointSize: 12
+            font.pointSize: 11
 
             color: "black"
         }

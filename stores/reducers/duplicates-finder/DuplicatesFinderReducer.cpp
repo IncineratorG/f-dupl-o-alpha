@@ -20,24 +20,49 @@ void DuplicatesFinderReducer::reduce(std::shared_ptr<State> state,
     switch (action->type()) {
         case (DuplicatesFinderActionTypes::FIND_DUPLICATES_BEGIN): {
             qDebug() << __PRETTY_FUNCTION__ << "->FIND_DUPLICATES_BEGIN";
+
+            currentState->update([currentState] () {
+                currentState->serviceRunning->set(true);
+                currentState->hasError->set(false);
+                currentState->error->set(Error());
+            });
+
             break;
         }
 
         case (DuplicatesFinderActionTypes::FIND_DUPLICATES_FINISHED): {
             qDebug() << __PRETTY_FUNCTION__ << "->FIND_DUPLICATES_FINISHED";
 
+            DuplicatesList duplicates;
             try {
-                auto duplicatesList = std::any_cast<DuplicatesList>(action->payload().getDefault());
-                qDebug() << __PRETTY_FUNCTION__ << duplicatesList.filesSize();
+                duplicates = std::any_cast<DuplicatesList>(action->payload().getDefault());
             } catch (const std::bad_any_cast&) {
                 qDebug() << __PRETTY_FUNCTION__ << "->FIND_DUPLICATES_FINISHED->BAD_ANY_CAST";
             }
+
+            currentState->update([currentState, duplicates] () {
+                currentState->serviceRunning->set(false);
+                currentState->duplicates->set(duplicates);
+            });
 
             break;
         }
 
         case (DuplicatesFinderActionTypes::FIND_DUPLICATES_ERROR): {
-            qDebug() << __PRETTY_FUNCTION__ << "->FIND_DUPLICATES_ERROR";
+            Error error;
+            try {
+                error = std::any_cast<Error>(action->payload().getDefault());
+            } catch (const std::bad_any_cast&) {
+                qDebug() << __PRETTY_FUNCTION__ << "->FIND_DUPLICATES_ERROR->BAD_ANY_CAST";
+                error = Error(-1, "FIND_DUPLICATES_ERROR->BAD_ANY_CAST");
+            }
+
+            currentState->update([currentState, error] () {
+                currentState->serviceRunning->set(false);
+                currentState->hasError->set(true);
+                currentState->error->set(error);
+            });
+
             break;
         }
 

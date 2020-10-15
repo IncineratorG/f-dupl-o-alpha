@@ -1,58 +1,79 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.0
 
 import "../../components/specific/duplicates/input-folders"
 import "../../components/specific/duplicates/scanning-results"
 import "../../components/specific/duplicates/scanning-controls"
 
 Rectangle {
-    Item {
-        id: inputFoldersContainer
+//    Rectangle {
+//        id: testRect
 
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
+//        anchors.fill: parent
 
-        height: parent.width / 8
+//        color: "#cc000000"
 
-        InputFolders {
-            anchors.fill: parent
-        }
-    }
+//        z: 1
+//        visible: DuplicatesScreenModel.duplicatesServiceRunning
 
-    Rectangle {
-        id: workZoneContainer
+//        MouseArea {
+//            anchors.fill: parent
+//        }
+//    }
 
-        anchors.top: inputFoldersContainer.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
+    SplitView {
+        anchors.fill: parent
 
-        color: 'blue'
+        orientation: Qt.Vertical
+
+        handleDelegate: Item {width: 3}
 
         Item {
-            id: resultListContainer
+            id: inputFoldersContainer
 
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.left: parent.left
-            anchors.right: controlsContainer.left
+            Layout.minimumWidth: 300
 
-            ScanningResults {
+            height: parent.width / 8
+
+            InputFolders {
                 anchors.fill: parent
             }
         }
 
-        Item {
-            id: controlsContainer
+        Rectangle {
+            id: workZoneContainer
 
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.right: parent.right
+            color: 'transparent'
 
-            width: 100
+            Layout.fillHeight: true
 
-            ScanningControls {
+            SplitView {
                 anchors.fill: parent
+
+                orientation: Qt.Horizontal
+
+                handleDelegate: Item {width: 3}
+
+                Item {
+                    id: resultListContainer
+
+                    Layout.fillWidth: true
+
+                    ScanningResults {
+                        anchors.fill: parent
+                    }
+                }
+
+                Item {
+                    id: controlsContainer
+
+                    Layout.minimumWidth: 100
+
+                    ScanningControls {
+                        anchors.fill: parent
+                    }
+                }
             }
         }
     }

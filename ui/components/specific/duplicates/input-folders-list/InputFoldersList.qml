@@ -14,8 +14,6 @@ Rectangle {
 
         clip: true
 
-        spacing: 4
-
         model: InputFoldersListModel
 
         delegate: InputFoldersListItem {

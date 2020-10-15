@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<QList<InputPath>>("QList<InputPath>");
     qRegisterMetaType<DuplicatesList>("DuplicatesList");
 
-    auto localization = new Localization(&engine);
+    auto localization = Localization::createAndGet(&engine);
     engine.rootContext()->setContextProperty("l", localization);
 
     QList<NativeScreen*> nativeScreens({
