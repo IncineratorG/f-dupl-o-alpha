@@ -71,7 +71,9 @@ SOURCES += \
     services/duplicates-finder/pipeline/operations-transition/OperationsTransition.cpp \
     services/duplicates-finder/data/input-path/InputPath.cpp \
     native-components/specific/duplicates/input-folders-list/models/InputFoldersWithSubpathsListModel.cpp \
-    services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.cpp
+    services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.cpp \
+    services/duplicates-finder/data/file-info/FileInfo.cpp \
+    services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.cpp
 
 RESOURCES += qml.qrc
 
@@ -144,5 +146,7 @@ HEADERS += \
     services/duplicates-finder/pipeline/operations-transition/OperationsTransition.h \
     services/duplicates-finder/data/input-path/InputPath.h \
     native-components/specific/duplicates/input-folders-list/models/InputFoldersWithSubpathsListModel.h \
-    services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.h
+    services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.h \
+    services/duplicates-finder/data/file-info/FileInfo.h \
+    services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.h
 

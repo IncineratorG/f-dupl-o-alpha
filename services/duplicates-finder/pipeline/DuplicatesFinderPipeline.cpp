@@ -1,27 +1,28 @@
 #include "DuplicatesFinderPipeline.h"
 #include "services/duplicates-finder/pipeline/operations/wait/WaitOperation.h"
 #include "services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.h"
+#include "services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.h"
 
 #include <QDebug>
 
 DuplicatesFinderPipeline::DuplicatesFinderPipeline() {
-    WaitOperation* wait = new WaitOperation();
-    ExtractFilesInfoOperation* extractFilesInfo = new ExtractFilesInfoOperation();
+    auto wait = new WaitOperation();
+    auto extractFilesInfo = new ExtractFilesInfoOperation();
+    auto findFileDuplicates = new FindFileDuplicatesOperation();
 
-    mOperationsSequence.setNextOperation(nullptr, extractFilesInfo, OperationsTransition([this, extractFilesInfo] () {
+    mOperationsSequence.setNextOperation(nullptr,
+                                         extractFilesInfo,
+                                         OperationsTransition([this, extractFilesInfo] () {
         extractFilesInfo->setInput(mInputPaths);
     }));
-    mOperationsSequence.setNextOperation(extractFilesInfo, nullptr, OperationsTransition());
-
-//    mOperationsSequence.setNextOperation(nullptr, waitOperation_1, OperationsTransition([] () {
-//        qDebug() << "FROM NULL TO OP_1";
-//    }));
-//    mOperationsSequence.setNextOperation(waitOperation_1, waitOperation_2, OperationsTransition([] () {
-//        qDebug() << "FROM OP_1 TO OP_2";
-//    }));
-//    mOperationsSequence.setNextOperation(waitOperation_2, nullptr, OperationsTransition([] () {
-//        qDebug() << "FROM OP_2 TO NULL";
-//    }));
+    mOperationsSequence.setNextOperation(extractFilesInfo,
+                                         findFileDuplicates,
+                                         OperationsTransition([this, extractFilesInfo, findFileDuplicates] () {
+        findFileDuplicates->setInput(extractFilesInfo->output());
+    }));
+    mOperationsSequence.setNextOperation(findFileDuplicates,
+                                         nullptr,
+                                         OperationsTransition());
 }
 
 void DuplicatesFinderPipeline::startPipeline(const QList<InputPath> inputPaths) {
