@@ -32,7 +32,7 @@ Rectangle {
         Item {
             id: inputFoldersContainer
 
-            Layout.minimumWidth: 300
+            Layout.minimumHeight: 100
 
             height: parent.width / 8
 
@@ -41,12 +41,11 @@ Rectangle {
             }
         }
 
-        Rectangle {
+        Item {
             id: workZoneContainer
 
-            color: 'transparent'
-
             Layout.fillHeight: true
+            Layout.minimumHeight: 100
 
             SplitView {
                 anchors.fill: parent
@@ -59,6 +58,7 @@ Rectangle {
                     id: resultListContainer
 
                     Layout.fillWidth: true
+                    Layout.minimumWidth: 100
 
                     ScanningResults {
                         anchors.fill: parent

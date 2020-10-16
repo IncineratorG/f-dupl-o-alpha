@@ -51,8 +51,6 @@ SOURCES += \
     common/libs/native-component/NativeComponent.cpp \
     native-screens/duplicates/models/DuplicatesScreenModel.cpp \
     stores/actions/input-folders-list/InputFoldersListActions.cpp \
-    native-components/specific/duplicates/input-folders-list/InputFoldersListComponent.cpp \
-    native-components/specific/duplicates/input-folders-list/models/InputFoldersListModel.cpp \
     stores/states/duplicates-finder/DuplicatesFinderState.cpp \
     stores/reducers/duplicates-finder/DuplicatesFinderReducer.cpp \
     stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.cpp \
@@ -71,7 +69,6 @@ SOURCES += \
     services/duplicates-finder/pipeline/operations-sequence/OperationsSequence.cpp \
     services/duplicates-finder/pipeline/operations-transition/OperationsTransition.cpp \
     services/duplicates-finder/data/input-path/InputPath.cpp \
-    native-components/specific/duplicates/input-folders-list/models/InputFoldersWithSubpathsListModel.cpp \
     services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.cpp \
     services/duplicates-finder/data/file-info/FileInfo.cpp \
     services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.cpp \
@@ -79,7 +76,18 @@ SOURCES += \
     common/data/error/Error.cpp \
     services/duplicates-finder/data/errors/Errors.cpp \
     services/duplicates-finder/data/errors/codes/ErrorCodes.cpp \
-    services/duplicates-finder/data/errors/descriptions/ErrorDescriptions.cpp
+    services/duplicates-finder/data/errors/descriptions/ErrorDescriptions.cpp \
+    native-components/specific/duplicates/files-with-duplicates-list/FilesWithDuplicatesListComponent.cpp \
+    native-components/specific/duplicates/files-with-duplicates-list/models/FilesWithDuplicatesListModel.cpp \
+    native-components/specific/duplicates/input-folders/InputFoldersComponent.cpp \
+    native-components/specific/duplicates/input-folders/controllers/InputFoldersController.cpp \
+    native-components/specific/duplicates/input-folders/models/InputFoldersListModel.cpp \
+    native-components/specific/duplicates/scanning-controls/ScanningControlsComponent.cpp \
+    native-components/specific/duplicates/scanning-controls/controllers/ScanningControllsController.cpp \
+    native-components/specific/duplicates/scanning-controls/models/ScanningControllsModel.cpp \
+    native-components/specific/duplicates/scanning-results/ScanningResultsComponent.cpp \
+    native-components/specific/duplicates/scanning-results/models/ScanningResultsFilesWithDuplicatesListModel.cpp \
+    native-components/specific/duplicates/scanning-results/controllers/ScanningResultsController.cpp
 
 RESOURCES += qml.qrc
 
@@ -131,8 +139,6 @@ HEADERS += \
     common/libs/native-component/NativeComponent.h \
     native-screens/duplicates/models/DuplicatesScreenModel.h \
     stores/actions/input-folders-list/InputFoldersListActions.h \
-    native-components/specific/duplicates/input-folders-list/InputFoldersListComponent.h \
-    native-components/specific/duplicates/input-folders-list/models/InputFoldersListModel.h \
     stores/states/duplicates-finder/DuplicatesFinderState.h \
     stores/reducers/duplicates-finder/DuplicatesFinderReducer.h \
     stores/action-types/duplicates-finder/DuplicatesFinderActionTypes.h \
@@ -151,7 +157,6 @@ HEADERS += \
     services/duplicates-finder/pipeline/operations-sequence/OperationsSequence.h \
     services/duplicates-finder/pipeline/operations-transition/OperationsTransition.h \
     services/duplicates-finder/data/input-path/InputPath.h \
-    native-components/specific/duplicates/input-folders-list/models/InputFoldersWithSubpathsListModel.h \
     services/duplicates-finder/pipeline/operations/extract-files-info/ExtractFilesInfoOperation.h \
     services/duplicates-finder/data/file-info/FileInfo.h \
     services/duplicates-finder/pipeline/operations/find-file-duplicates/FindFileDuplicatesOperation.h \
@@ -159,5 +164,16 @@ HEADERS += \
     common/data/error/Error.h \
     services/duplicates-finder/data/errors/Errors.h \
     services/duplicates-finder/data/errors/codes/ErrorCodes.h \
-    services/duplicates-finder/data/errors/descriptions/ErrorDescriptions.h
+    services/duplicates-finder/data/errors/descriptions/ErrorDescriptions.h \
+    native-components/specific/duplicates/files-with-duplicates-list/FilesWithDuplicatesListComponent.h \
+    native-components/specific/duplicates/files-with-duplicates-list/models/FilesWithDuplicatesListModel.h \
+    native-components/specific/duplicates/input-folders/InputFoldersComponent.h \
+    native-components/specific/duplicates/input-folders/controllers/InputFoldersController.h \
+    native-components/specific/duplicates/input-folders/models/InputFoldersListModel.h \
+    native-components/specific/duplicates/scanning-controls/ScanningControlsComponent.h \
+    native-components/specific/duplicates/scanning-controls/controllers/ScanningControllsController.h \
+    native-components/specific/duplicates/scanning-controls/models/ScanningControllsModel.h \
+    native-components/specific/duplicates/scanning-results/ScanningResultsComponent.h \
+    native-components/specific/duplicates/scanning-results/models/ScanningResultsFilesWithDuplicatesListModel.h \
+    native-components/specific/duplicates/scanning-results/controllers/ScanningResultsController.h
 

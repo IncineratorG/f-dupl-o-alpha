@@ -9,5 +9,8 @@
         <file>ui/components/specific/duplicates/input-folders-list/input-folders-list-item/InputFoldersListItem.qml</file>
         <file>ui/components/specific/duplicates/scanning-results/ScanningResults.qml</file>
         <file>ui/components/specific/duplicates/scanning-controls/ScanningControls.qml</file>
+        <file>ui/components/specific/duplicates/files-with-duplicates-list/FilesWithDuplicatesList.qml</file>
+        <file>ui/components/specific/duplicates/files-with-duplicates/FilesWithDuplicates.qml</file>
+        <file>ui/components/specific/duplicates/files-with-duplicates-list/files-with-duplicates-list-item/FilesWithDuplicatesListItem.qml</file>
     </qresource>
 </RCC>

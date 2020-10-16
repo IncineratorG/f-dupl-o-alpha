@@ -23,15 +23,15 @@ Rectangle {
             anchors.right: parent.right
             anchors.margins: 4
 
-            text: DuplicatesScreenModel.duplicatesServiceRunning ?
+            text: ScanningControllsModel.duplicatesServiceRunning ?
                   l.t("ScanningControls_toggleScanningButton_stopScanning") :
                   l.t("ScanningControls_toggleScanningButton_startScanning")
 
             onClicked: {
-                if (DuplicatesScreenModel.duplicatesServiceRunning) {
-                    DuplicatesScreenController.stopScanningButtonHandler()
+                if (ScanningControllsModel.duplicatesServiceRunning) {
+                    ScanningControllsController.stopScanningButtonHandler()
                 } else {
-                    DuplicatesScreenController.startScanningButtonHandler()
+                    ScanningControllsController.startScanningButtonHandler()
                 }
             }
         }

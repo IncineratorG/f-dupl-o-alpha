@@ -1,9 +1,9 @@
-#include "DuplicatesScreenModel.h"
+#include "ScanningControllsModel.h"
 #include "stores/AppStore.h"
 
 #include <QDebug>
 
-DuplicatesScreenModel::DuplicatesScreenModel()
+ScanningControllsModel::ScanningControllsModel()
     : mDuplicatesServiceRunning(false)
 {
     auto duplicatesState = AppStore::get()->duplicatesFinderState;
@@ -17,11 +17,11 @@ DuplicatesScreenModel::DuplicatesScreenModel()
     );
 }
 
-void DuplicatesScreenModel::setDuplicatesServiceRunning(bool value) {
+void ScanningControllsModel::setDuplicatesServiceRunning(bool value) {
     mDuplicatesServiceRunning = value;
     emit duplicatesServiceRunningChanged(mDuplicatesServiceRunning);
 }
 
-bool DuplicatesScreenModel::duplicatesServiceRunning() const {
+bool ScanningControllsModel::duplicatesServiceRunning() const {
     return mDuplicatesServiceRunning;
 }

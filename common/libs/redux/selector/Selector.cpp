@@ -15,6 +15,8 @@ Selector::Selector(const QList<std::shared_ptr<StatePropLike>> props,
     for (int i = 0; i < props.length(); ++i) {
         mPropIds.append(props.at(i)->propId());
     }
+
+    mId = SelectorIdsGenerator::nextId();
 }
 
 int Selector::id() const {

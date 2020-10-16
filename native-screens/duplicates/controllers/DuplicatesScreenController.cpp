@@ -11,31 +11,31 @@ DuplicatesScreenController::DuplicatesScreenController() {
 
 }
 
-void DuplicatesScreenController::addFolderHandler(const QString& folderUrl) {
-    QString validFolderUrl = folderUrl;
+//void DuplicatesScreenController::addFolderHandler(const QString& folderUrl) {
+//    QString validFolderUrl = folderUrl;
 
-    const QString qmlFilePrefix = AppStore::get()->systemState->qmlFilePrefix->value();
-    if (validFolderUrl.contains(qmlFilePrefix)) {
-        validFolderUrl.remove(0, qmlFilePrefix.length());
-    }
+//    const QString qmlFilePrefix = AppStore::get()->systemState->qmlFilePrefix->value();
+//    if (validFolderUrl.contains(qmlFilePrefix)) {
+//        validFolderUrl.remove(0, qmlFilePrefix.length());
+//    }
 
-    AppStore::get()->dispatch(
-        InputFoldersListActions::addFolderAction(validFolderUrl)
-    );
-}
+//    AppStore::get()->dispatch(
+//        InputFoldersListActions::addFolderAction(validFolderUrl)
+//    );
+//}
 
-void DuplicatesScreenController::removeFolderButtonHandler(const QString& folderName) {
-    AppStore::get()->dispatch(
-        InputFoldersListActions::removeFolderAction(folderName)
-    );
-}
+//void DuplicatesScreenController::removeFolderButtonHandler(const QString& folderName) {
+//    AppStore::get()->dispatch(
+//        InputFoldersListActions::removeFolderAction(folderName)
+//    );
+//}
 
-void DuplicatesScreenController::setIncludeFolderSubpaths(const QString& folderName,
-                                                          const bool includeSubpath) {
-    AppStore::get()->dispatch(
-        InputFoldersListActions::updateFolderAction(folderName, includeSubpath)
-    );
-}
+//void DuplicatesScreenController::setIncludeFolderSubpaths(const QString& folderName,
+//                                                          const bool includeSubpath) {
+//    AppStore::get()->dispatch(
+//        InputFoldersListActions::updateFolderAction(folderName, includeSubpath)
+//    );
+//}
 
 void DuplicatesScreenController::startScanningButtonHandler() {
     qDebug() << __PRETTY_FUNCTION__;

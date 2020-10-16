@@ -66,7 +66,7 @@ Item {
         title: l.t("InputFolders_fileDialogTitle")
 
         onAccepted: {
-            DuplicatesScreenController.addFolderHandler(fileDialog.fileUrls)
+            InputFoldersController.addFolderHandler(fileDialog.fileUrls)
         }
     }
 }

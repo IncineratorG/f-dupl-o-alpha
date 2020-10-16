@@ -9,7 +9,9 @@
 #include "utils/common/localization/Localization.h"
 #include "native-screens/test/TestScreen.h"
 #include "native-screens/duplicates/DuplicatesScreen.h"
-#include "native-components/specific/duplicates/input-folders-list/InputFoldersListComponent.h"
+#include "native-components/specific/duplicates/input-folders/InputFoldersComponent.h"
+#include "native-components/specific/duplicates/scanning-controls/ScanningControlsComponent.h"
+#include "native-components/specific/duplicates/scanning-results/ScanningResultsComponent.h"
 
 int main(int argc, char *argv[])
 {
@@ -30,9 +32,11 @@ int main(int argc, char *argv[])
         new DuplicatesScreen(engine.rootContext())
     });
 
-    QList<NativeComponent*> nativeComponents({
-        new InputFoldersListComponent(engine.rootContext()),
-    });
+//    QList<NativeComponent*> nativeComponents({
+//        new InputFoldersComponent(engine.rootContext()),
+//        new ScanningResultsComponent(engine.rootContext()),
+//        new ScanningControlsComponent(engine.rootContext()),
+//    });
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty()) {

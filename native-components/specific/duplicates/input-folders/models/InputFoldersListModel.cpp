@@ -1,28 +1,28 @@
 #include "InputFoldersListModel.h"
 #include "stores/AppStore.h"
 
-#include <QDebug>
-
 InputFoldersListModel::InputFoldersListModel() {
     auto inputFoldersListState = AppStore::get()->inputFoldersListState;
     inputFoldersListState->select(
         Selector(
-            {inputFoldersListState->folderNames},
+            {inputFoldersListState->inputFolders},
             [this, inputFoldersListState] () {
                 beginResetModel();
-                folderNames = inputFoldersListState->folderNames->value();
+                mPaths = inputFoldersListState->inputFolders->value();
                 endResetModel();
+
+                emit sizeChanged(mPaths.length());
             }
         )
     );
 }
 
 int InputFoldersListModel::rowCount(const QModelIndex& parent) const {
-    return folderNames.length();
+    return mPaths.length();
 }
 
 QVariant InputFoldersListModel::data(const QModelIndex& index, int role) const {
-    if (index.row() < 0 || index.row() >= folderNames.length()) {
+    if (index.row() < 0 || index.row() >= mPaths.length()) {
         return QVariant();
     }
 
@@ -32,7 +32,11 @@ QVariant InputFoldersListModel::data(const QModelIndex& index, int role) const {
         }
 
         case FolderNameRole: {
-            return folderNames.at(index.row());
+            return mPaths.at(index.row()).path();
+        }
+
+        case IncludeSubpathRole: {
+            return mPaths.at(index.row()).includeSubpath();
         }
     }
 
@@ -43,6 +47,11 @@ QHash<int, QByteArray> InputFoldersListModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[IDRole] = "id";
     roles[FolderNameRole] = "folderName";
+    roles[IncludeSubpathRole] = "includeSubpath";
 
     return roles;
+}
+
+int InputFoldersListModel::size() const {
+    return mPaths.length();
 }

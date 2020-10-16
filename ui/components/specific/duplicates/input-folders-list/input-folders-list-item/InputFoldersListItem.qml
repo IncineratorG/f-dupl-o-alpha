@@ -58,7 +58,7 @@ Rectangle {
                 anchors.fill: parent
 
                 onClicked: {
-                    DuplicatesScreenController.setIncludeFolderSubpaths(folderName, !includeSubpath)
+                    InputFoldersController.setIncludeFolderSubpaths(folderName, !includeSubpath)
                 }
             }
         }
@@ -80,7 +80,7 @@ Rectangle {
                 anchors.fill: parent
 
                 onClicked: {
-                    DuplicatesScreenController.removeFolderButtonHandler(folderName)
+                    InputFoldersController.removeFolderButtonHandler(folderName)
                 }
             }
         }

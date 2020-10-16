@@ -1,5 +1,5 @@
-#ifndef INPUTFOLDERSWITHSUBPATHSLISTMODEL_H
-#define INPUTFOLDERSWITHSUBPATHSLISTMODEL_H
+#ifndef INPUTFOLDERSLISTMODEL_H
+#define INPUTFOLDERSLISTMODEL_H
 
 #include "services/duplicates-finder/data/input-path/InputPath.h"
 
@@ -8,7 +8,7 @@
 #include <QList>
 #include <QString>
 
-class InputFoldersWithSubpathsListModel : public QAbstractListModel
+class InputFoldersListModel : public QAbstractListModel
 {
     Q_OBJECT
 
@@ -21,7 +21,7 @@ public:
         IncludeSubpathRole
     };
 
-    InputFoldersWithSubpathsListModel();
+    InputFoldersListModel();
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
@@ -36,4 +36,4 @@ private:
     QList<InputPath> mPaths;
 };
 
-#endif // INPUTFOLDERSWITHSUBPATHSLISTMODEL_H
+#endif // INPUTFOLDERSLISTMODEL_H
